@@ -2,87 +2,82 @@ package framework.de;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * CollectionDes
  */
 public class CollectionDes implements Collection<De> {
 
+    private List<De> des;
+
+    public CollectionDes(List<De> des) {
+        this.des = des;
+    }
+
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.des.size();
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return this.des.isEmpty();
     }
 
     @Override
     public boolean contains(Object o) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.des.contains(o);
     }
 
     @Override
     public Iterator<De> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        return new DeIterateur(this);
     }
 
     @Override
-    public Object[] toArray() {
-        // TODO Auto-generated method stub
-        return null;
+    public De[] toArray() {
+        return (De[]) this.des.toArray(); // Retourer le bon type
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.des.toArray(a);
     }
 
     @Override
     public boolean add(De e) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.des.add(e);
     }
 
     @Override
     public boolean remove(Object o) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.des.remove(o);
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.des.containsAll(c);
     }
 
     @Override
     public boolean addAll(Collection<? extends De> c) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.des.addAll(c);
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.des.removeAll(c);
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.des.retainAll(c);
     }
 
     @Override
     public void clear() {
-        // TODO Auto-generated method stub
+        this.des.clear();
 
     }
 

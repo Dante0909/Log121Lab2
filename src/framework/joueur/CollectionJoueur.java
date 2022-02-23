@@ -2,87 +2,82 @@ package framework.joueur;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * CollectionJoueur
  */
 public class CollectionJoueur implements Collection<Joueur> {
 
+    private List<Joueur> joueurs;
+
+    public CollectionJoueur(List<Joueur> joueurs) {
+        this.joueurs = joueurs;
+    }
+
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.joueurs.size();
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return this.joueurs.isEmpty();
     }
 
     @Override
     public boolean contains(Object o) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.joueurs.contains(o);
     }
 
     @Override
     public Iterator<Joueur> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        return new JoueurIterateur(this);
     }
 
     @Override
-    public Object[] toArray() {
-        // TODO Auto-generated method stub
-        return null;
+    public Joueur[] toArray() {
+        return (Joueur[]) this.joueurs.toArray(); // Retourer le bon type
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.joueurs.toArray(a);
     }
 
     @Override
     public boolean add(Joueur e) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.joueurs.add(e);
     }
 
     @Override
     public boolean remove(Object o) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.joueurs.remove(o);
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.joueurs.containsAll(c);
     }
 
     @Override
     public boolean addAll(Collection<? extends Joueur> c) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.joueurs.addAll(c);
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.joueurs.removeAll(c);
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.joueurs.retainAll(c);
     }
 
     @Override
     public void clear() {
-        // TODO Auto-generated method stub
+        this.joueurs.clear();
 
     }
 
