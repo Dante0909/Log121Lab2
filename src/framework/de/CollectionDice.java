@@ -7,11 +7,11 @@ import java.util.List;
 /**
  * CollectionDes
  */
-public class CollectionDes implements Collection<De> {
+public class CollectionDice implements Collection<Dice> {
 
-    private List<De> des;
+    private List<Dice> des;
 
-    public CollectionDes(List<De> des) {
+    public CollectionDice(List<Dice> des) {
         this.des = des;
     }
 
@@ -31,13 +31,13 @@ public class CollectionDes implements Collection<De> {
     }
 
     @Override
-    public Iterator<De> iterator() {
-        return new DeIterateur(this);
+    public Iterator<Dice> iterator() {
+        return new DiceIterator(this);
     }
 
     @Override
-    public De[] toArray() {
-        return (De[]) this.des.toArray(); // Retourer le bon type
+    public Dice[] toArray() {
+        return (Dice[]) this.des.toArray(); // Retourer le bon type
     }
 
     @Override
@@ -46,7 +46,7 @@ public class CollectionDes implements Collection<De> {
     }
 
     @Override
-    public boolean add(De e) {
+    public boolean add(Dice e) {
         return this.des.add(e);
     }
 
@@ -61,7 +61,7 @@ public class CollectionDes implements Collection<De> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends De> c) {
+    public boolean addAll(Collection<? extends Dice> c) {
         return this.des.addAll(c);
     }
 

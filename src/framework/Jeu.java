@@ -1,7 +1,7 @@
 package framework;
 
 import framework.de.*;
-import framework.joueur.CollectionJoueur;
+import framework.joueur.CollectionPlayer;
 import framework.joueur.*;
 
 /**
@@ -9,10 +9,10 @@ import framework.joueur.*;
  */
 public class Jeu {
 
-	private Strategie strategy;
-	private CollectionJoueur players;
-	private CollectionDes dices;
-    public Jeu(Strategie s, CollectionDes d, CollectionJoueur p) {
+	private Strategy strategy;
+	private CollectionPlayer players;
+	private CollectionDice dices;
+    public Jeu(Strategy s, CollectionDice d, CollectionPlayer p) {
     	strategy = s;
     	players = p;
     	dices = d;

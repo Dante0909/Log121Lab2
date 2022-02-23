@@ -7,11 +7,11 @@ import java.util.List;
 /**
  * CollectionJoueur
  */
-public class CollectionJoueur implements Collection<Joueur> {
+public class CollectionPlayer implements Collection<Player> {
 
-    private List<Joueur> joueurs;
+    private List<Player> joueurs;
 
-    public CollectionJoueur(List<Joueur> joueurs) {
+    public CollectionPlayer(List<Player> joueurs) {
         this.joueurs = joueurs;
     }
 
@@ -31,13 +31,13 @@ public class CollectionJoueur implements Collection<Joueur> {
     }
 
     @Override
-    public Iterator<Joueur> iterator() {
-        return new JoueurIterateur(this);
+    public Iterator<Player> iterator() {
+        return new PlayerIterator(this);
     }
 
     @Override
-    public Joueur[] toArray() {
-        return (Joueur[]) this.joueurs.toArray(); // Retourer le bon type
+    public Player[] toArray() {
+        return (Player[]) this.joueurs.toArray(); // Retourer le bon type
     }
 
     @Override
@@ -46,7 +46,7 @@ public class CollectionJoueur implements Collection<Joueur> {
     }
 
     @Override
-    public boolean add(Joueur e) {
+    public boolean add(Player e) {
         return this.joueurs.add(e);
     }
 
@@ -61,7 +61,7 @@ public class CollectionJoueur implements Collection<Joueur> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends Joueur> c) {
+    public boolean addAll(Collection<? extends Player> c) {
         return this.joueurs.addAll(c);
     }
 

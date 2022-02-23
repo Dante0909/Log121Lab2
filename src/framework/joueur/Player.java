@@ -3,18 +3,18 @@ package framework.joueur;
 /**
  * Joueur
  */
-public class Joueur implements Comparable<Joueur> {
+public class Player implements Comparable<Player> {
 
     private String nom;
     private int score;
 
-    public Joueur(String nom) {
+    public Player(String nom) {
         this.nom = nom;
         this.score = 0;
     }
 
     @Override
-    public int compareTo(Joueur autre) {
+    public int compareTo(Player autre) {
         Integer ceScore = Integer.valueOf(this.getScore());
         Integer autreScore = Integer.valueOf(autre.getScore());
         return ceScore.compareTo(autreScore);

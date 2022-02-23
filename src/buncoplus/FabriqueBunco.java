@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import framework.Fabrique;
 import framework.Jeu;
-import framework.Strategie;
+import framework.Strategy;
 import framework.de.*;
 import framework.joueur.*;
 
@@ -24,26 +24,26 @@ public class FabriqueBunco extends Fabrique {
 	}
 
 	@Override
-	protected CollectionJoueur createPlayers() {
-		var a = new ArrayList<Joueur>();
+	protected CollectionPlayer createPlayers() {
+		var a = new ArrayList<Player>();
 
 		for (int i = 0; i < nbPlayers; ++i) {
-			a.add(new Joueur(""));
+			a.add(new Player(""));
 		}
-		var p = new CollectionJoueur(a);
+		var p = new CollectionPlayer(a);
 		return p;
 	}
 
 	@Override
-	protected CollectionDes createDices() {
-		var a = new ArrayList<De>();
-		var d = new CollectionDes(a);
+	protected CollectionDice createDices() {
+		var a = new ArrayList<Dice>();
+		var d = new CollectionDice(a);
 		return d;
 	}
 
 	@Override
-	protected Strategie createStrategy() {
-		return new StrategieBunco();
+	protected Strategy createStrategy() {
+		return new StrategyBunco();
 	}
 
 	@Override

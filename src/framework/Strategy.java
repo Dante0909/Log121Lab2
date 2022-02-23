@@ -3,6 +3,6 @@ package framework;
 /**
  * Stategie
  */
-public interface Strategie {
+public interface Strategy {
 
 }

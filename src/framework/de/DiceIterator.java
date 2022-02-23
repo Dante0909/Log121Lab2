@@ -1,28 +1,28 @@
-package framework.joueur;
+package framework.de;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * JoueurIterateur
+ * DeIterateur
  */
-public class JoueurIterateur implements Iterator<Joueur> {
+public class DiceIterator implements Iterator<Dice> {
 
-    private Joueur[] joueurs;
+    private Dice[] des;
     private int indice;
 
-    public JoueurIterateur(CollectionJoueur joueurs) {
-        this.joueurs = joueurs.toArray();
+    public DiceIterator(CollectionDice des) {
+        this.des = des.toArray();
         this.indice = -1; // car on doit appeller next() au début pour avoir le premier element
     }
 
     @Override
     public boolean hasNext() {
-        return this.indice + 1 < this.joueurs.length;
+        return this.indice + 1 < this.des.length;
     }
 
     @Override
-    public Joueur next() {
+    public Dice next() {
         if (!this.hasNext()) {
             throw new NoSuchElementException();
         }
@@ -30,11 +30,11 @@ public class JoueurIterateur implements Iterator<Joueur> {
         return this.current();
     }
 
-    public Joueur current() {
+    public Dice current() {
         if (this.indice == -1) {
             throw new NoSuchElementException();
         }
-        return this.joueurs[this.indice];
+        return this.des[this.indice];
     }
 
 }
