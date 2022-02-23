@@ -11,6 +11,10 @@ public class CollectionDes implements Collection<De> {
 
     private List<De> des;
 
+    public CollectionDes(List<De> des) {
+        this.des = des;
+    }
+
     @Override
     public int size() {
         return this.des.size();

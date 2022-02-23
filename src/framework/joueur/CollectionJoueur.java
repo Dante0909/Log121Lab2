@@ -11,6 +11,10 @@ public class CollectionJoueur implements Collection<Joueur> {
 
     private List<Joueur> joueurs;
 
+    public CollectionJoueur(List<Joueur> joueurs) {
+        this.joueurs = joueurs;
+    }
+
     @Override
     public int size() {
         return this.joueurs.size();
