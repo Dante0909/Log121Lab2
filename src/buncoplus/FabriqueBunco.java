@@ -28,22 +28,21 @@ public class FabriqueBunco extends Fabrique {
 		var a = new ArrayList<Joueur>();
 
 		for (int i = 0; i < nbPlayers; ++i) {
-			a.add(new Joueur());
+			a.add(new Joueur(""));
 		}
-		var p = new CollectionJoueur();
+		var p = new CollectionJoueur(a);
 		return p;
 	}
 
 	@Override
 	protected CollectionDes createDices() {
 		var a = new ArrayList<De>();
-		var d = new CollectionDes();
+		var d = new CollectionDes(a);
 		return d;
 	}
 
 	@Override
 	protected Strategie createStrategy() {
-		// TODO Auto-generated method stub
 		return new StrategieBunco();
 	}
 
