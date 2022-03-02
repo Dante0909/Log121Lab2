@@ -1,7 +1,7 @@
 package framework;
 
 /**
- * Stategie
+ * Interface Stategie
  */
 public interface Strategy {
 
