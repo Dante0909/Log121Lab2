@@ -15,10 +15,10 @@ public class FabriqueBunco extends Fabrique {
 
 	private int nbPlayers = 2;
 
-	public FabriqueBunco(int nbPlayers) {
+	/*public FabriqueBunco(int nbPlayers) {
 		this.nbPlayers = nbPlayers;
 	}
-
+*/
 	public FabriqueBunco() {
 
 	}
@@ -51,7 +51,7 @@ public class FabriqueBunco extends Fabrique {
 		var s = createStrategy();
 		var p = createPlayers();
 		var d = createDices();
-		return new Jeu(s, d, p);
+		return new Jeu(d, p);
 
 	}
 
