@@ -20,10 +20,44 @@ public class StrategyBunco implements Strategy {
     @Override
     public Player calculerVainqueur(Jeu jeu) {
 
-         Player player1 = null;
-         Player player2 = null;
-         Player winner = null;
+         Player player1 = null, player2 = null, winner = null;
 
+
+         //Iterator
+         PlayerIterator playerIterator = new PlayerIterator((jeu.getPlayers()));   // A CONFIRMER
+
+        //On defile dans les iterateurs de joueur pour trouver le gagnant
+         while(playerIterator.hasNext()){
+
+             //PLAYER 1 PREND LE PREMIER ELEMENT DANS LA COLLECTION PLAYER - A CONFIRMER
+             player1 = (Player) playerIterator.next();
+
+             //PLAYER 2 PREND LE DEUXIEME ELEMENT DANS LA COLLECTION PLAYER - A CONFIRMER
+             player2 = (Player) playerIterator.next();
+
+             //******************************** COMPARATORS *******************************
+             //On compare les scores des joueurs
+
+             //si player 2 est superieur a player 1 - A CONFIRMER
+             if(player1.compareTo(player2) == 1){
+
+                System.out.println(player2.getNom() + " est le vainqueur !");
+                winner = player2;
+             }
+
+             //si egalite - A CONFIRMER
+             else if(player1.compareTo(player2) == 2){
+                System.out.println("Aucun vainqueur ! Egalite");
+                return null;
+             }
+
+             //sinon joueur 1 gagne - A CONFIRMER
+             else{
+                 System.out.println(player1.getNom() + " est le vainqueur !");
+                 winner = player1;
+             }
+
+         }
 
         return winner;
     }
@@ -34,17 +68,17 @@ public class StrategyBunco implements Strategy {
         int tour = 0;
         int score = 0;
         int lancerDe = 1;
-        boolean continuerTour = false;
+        boolean ArretTour = false;
 
-        Iterator<Player> players;
+        PlayerIterator players;
 
         while(tour<6){
-/*
-            //players = new PlayerIterator //<----------- get la liste des joueurs grace a l'iterator mais le iterator doit etre complete
+
+            players = new PlayerIterator(jeu.getPlayers()); //<----------- get la liste des joueurs grace a l'iterator mais A CONFIRMER AVEC EQUIPE
+
 
             //Print quel tour on est
             System.out.println("Tour : " + tour+1);
-
 
             //On defile les joueurs dans la collection
             while(players.hasNext()){
@@ -53,38 +87,32 @@ public class StrategyBunco implements Strategy {
                 System.out.println("Joueur : " + player.getNom());
 
                 //On lance une boucle : tant que notre condition n'est pas atteinte, le tour continu
-                while(!continuerTour){
+                while(!ArretTour){
                     System.out.println("Numero de lancer : " + lancerDe);
 
                     // INSERER METHODE POUR LANCER LE DE
                     //int scoreTemporaire = ...
-
+/*
                     switch(scoreTemporaire){
 
-                        case 0 :  continuerTour = true;
+                        case 0 :  ArretTour = true;
                                   break;
                         case 21 : System.out.println("Le joueur " + player.getNom() + "a obtenu un BUNCO !");
-                                  continuerTour = true;
+                                  ArretTour = true;
                                   break;
                         default : lancerDe++;
                     }
 
                     score += scoreTemporaire;
-
+*/
                 }
             }
-
-
 
             //On ajoute le score a la fin de son tour
             //player.setScore(player.getScore + score);
 
             //Print Score a la fin du tour
             System.out.println("Score pour le tour : " + score);
-            //Print Score total du joueur
-            //System.out.println("Score totale du joueur " + joueur.getNom + " : " +  joueur.getScore);
-
-
 
             //Incremente le tour pour atteindre le 6em tour et cloturer la boucle
             tour++;
@@ -92,15 +120,12 @@ public class StrategyBunco implements Strategy {
             //On remet le score a 0
             score = 0;
 
-            //on repart la boucle
-            continuerTour = true;
+            //on stop la boucle
+            ArretTour = true;
 
- */
         }
 
-
-
-        return 0;
+        return score;
     }
 
 

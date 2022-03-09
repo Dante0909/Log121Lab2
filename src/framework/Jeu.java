@@ -22,6 +22,9 @@ public class Jeu {
     	this.strategy = strategy;
 	}
 
+	public CollectionPlayer getPlayers(){
+    	return players;
+	}
 
     public void lancerJeu() {
     	
