@@ -37,4 +37,8 @@ public class PlayerIterator implements Iterator<Player> {
         return this.joueurs[this.indice];
     }
 
+    /**
+     * LA METHODE CREATE ITERATOR EST OU ?? - sunny
+     */
+
 }

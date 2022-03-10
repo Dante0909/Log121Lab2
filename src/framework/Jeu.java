@@ -12,11 +12,20 @@ public class Jeu {
 	private Strategy strategy;
 	private CollectionPlayer players;
 	private CollectionDice dices;
-    public Jeu(Strategy s, CollectionDice d, CollectionPlayer p) {
-    	strategy = s;
-    	players = p;
-    	dices = d;
+
+    public Jeu(CollectionDice d, CollectionPlayer p) {
+    	this.players = p;
+    	this.dices = d;
     }
+
+    public void setStrategy(Strategy strategy){
+    	this.strategy = strategy;
+	}
+
+	public CollectionPlayer getPlayers(){
+    	return players;
+	}
+
     public void lancerJeu() {
     	
     }
