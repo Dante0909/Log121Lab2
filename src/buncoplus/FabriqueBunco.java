@@ -22,13 +22,16 @@ public class FabriqueBunco extends Fabrique {
 	public FabriqueBunco() {
 
 	}
+	public FabriqueBunco(int n) {
+		nbPlayers = n;
+	}
 
 	@Override
 	protected CollectionPlayer createPlayers() {
 		var a = new ArrayList<Player>();
 
 		for (int i = 0; i < nbPlayers; ++i) {
-			a.add(new Player(""));
+			a.add(new Player("Player "+ i+1));
 		}
 		var p = new CollectionPlayer(a);
 		return p;
@@ -51,7 +54,7 @@ public class FabriqueBunco extends Fabrique {
 		var s = createStrategy();
 		var p = createPlayers();
 		var d = createDices();
-		return new Jeu(d, p);
+		return new Jeu(d, p, s);
 
 	}
 

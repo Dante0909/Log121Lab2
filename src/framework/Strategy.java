@@ -1,5 +1,7 @@
 package framework;
 
+import framework.de.CollectionDice;
+import framework.joueur.CollectionPlayer;
 import framework.joueur.Player;
 
 /**
@@ -14,13 +16,15 @@ public interface Strategy {
      * @param jeu une instance du jeu
      * @return Joueur gagnant
      */
-    Player calculerVainqueur(Jeu jeu);
+    Player calculerVainqueur(CollectionPlayer players);
 
     /**
      * Methode pour calculer le score du tour
+     * @param turn TODO
      * @param jeu une instance du jeu
      * @return le score du tour
      */
-    int calculerScoreTour(Jeu jeu);
+    boolean calculerScoreTour(Player player, CollectionDice dices, int turn);
 
+    int getNbTurns();
 }

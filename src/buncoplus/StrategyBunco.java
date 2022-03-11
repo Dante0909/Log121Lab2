@@ -2,11 +2,14 @@ package buncoplus;
 
 import framework.Jeu;
 import framework.Strategy;
+import framework.de.CollectionDice;
+import framework.de.DiceIterator;
 import framework.joueur.CollectionPlayer;
 import framework.joueur.Player;
 import framework.joueur.PlayerIterator;
 
 import java.util.Iterator;
+import java.util.Random;
 
 /**
  * Classe : StrategyBunco
@@ -17,116 +20,130 @@ import java.util.Iterator;
  */
 public class StrategyBunco implements Strategy {
 
+	
     @Override
-    public Player calculerVainqueur(Jeu jeu) {
+    public Player calculerVainqueur(CollectionPlayer players) {
 
-         Player player1 = null, player2 = null, winner = null;
+//         Player player1 = null, player2 = null, winner = null;
+//
+//
+//         //Iterator
+//         PlayerIterator playerIterator = new PlayerIterator((jeu.getPlayers()));   // A CONFIRMER
+//
+//        //On defile dans les iterateurs de joueur pour trouver le gagnant
+//         while(playerIterator.hasNext()){
+//
+//             //PLAYER 1 PREND LE PREMIER ELEMENT DANS LA COLLECTION PLAYER - A CONFIRMER
+//             player1 = (Player) playerIterator.next();
+//
+//             //PLAYER 2 PREND LE DEUXIEME ELEMENT DANS LA COLLECTION PLAYER - A CONFIRMER
+//             player2 = (Player) playerIterator.next();
+//
+//             //******************************** COMPARATORS *******************************
+//             //On compare les scores des joueurs
+//
+//             //si player 2 est superieur a player 1 - A CONFIRMER
+//             if(player1.compareTo(player2) == 1){
+//
+//                System.out.println(player2.getNom() + " est le vainqueur !");
+//                winner = player2;
+//             }
+//
+//             //si egalite - A CONFIRMER
+//             else if(player1.compareTo(player2) == 2){
+//                System.out.println("Aucun vainqueur ! Egalite");
+//                return null;
+//             }
+//
+//             //sinon joueur 1 gagne - A CONFIRMER
+//             else{
+//                 System.out.println(player1.getNom() + " est le vainqueur !");
+//                 winner = player1;
+//             }
+//
+//         }
 
-
-         //Iterator
-         PlayerIterator playerIterator = new PlayerIterator((jeu.getPlayers()));   // A CONFIRMER
-
-        //On defile dans les iterateurs de joueur pour trouver le gagnant
-         while(playerIterator.hasNext()){
-
-             //PLAYER 1 PREND LE PREMIER ELEMENT DANS LA COLLECTION PLAYER - A CONFIRMER
-             player1 = (Player) playerIterator.next();
-
-             //PLAYER 2 PREND LE DEUXIEME ELEMENT DANS LA COLLECTION PLAYER - A CONFIRMER
-             player2 = (Player) playerIterator.next();
-
-             //******************************** COMPARATORS *******************************
-             //On compare les scores des joueurs
-
-             //si player 2 est superieur a player 1 - A CONFIRMER
-             if(player1.compareTo(player2) == 1){
-
-                System.out.println(player2.getNom() + " est le vainqueur !");
-                winner = player2;
-             }
-
-             //si egalite - A CONFIRMER
-             else if(player1.compareTo(player2) == 2){
-                System.out.println("Aucun vainqueur ! Egalite");
-                return null;
-             }
-
-             //sinon joueur 1 gagne - A CONFIRMER
-             else{
-                 System.out.println(player1.getNom() + " est le vainqueur !");
-                 winner = player1;
-             }
-
-         }
-
-        return winner;
+        return null;
     }
 
     @Override
-    public int calculerScoreTour(Jeu jeu) {
+    public boolean calculerScoreTour(Player player, CollectionDice d, int turn) {
 
-        int tour = 0;
-        int score = 0;
-        int lancerDe = 1;
-        boolean ArretTour = false;
+    	
+    	var dices = d.iterator();
+    	var rand = new Random();		
+    	while(dices.hasNext()) {
+    		var dice = dices.next();
+    		int[] rolls = new int[3];
+    		rolls[0] = rand.nextInt(7);
+    		rolls[1] = rand.nextInt(7);
+    		rolls[2] = rand.nextInt(7);
+    		
+    		
+    		
+    		
+    	}
+//        int score = 0;
+//        int lancerDe = 1;
+//        boolean ArretTour = false;
+//
+//
+//
+//            //Print quel tour on est
+//            System.out.println("Tour : " + tour+1);
+//
+//            //On defile les joueurs dans la collection
+//            while(players.hasNext()){
+//
+//                Player player = (Player) players.next();
+//                System.out.println("Joueur : " + player.getNom());
+//
+//                //On lance une boucle : tant que notre condition n'est pas atteinte, le tour continu
+//                while(!ArretTour){
+//                    System.out.println("Numero de lancer : " + lancerDe);
+//
+//                    // INSERER METHODE POUR LANCER LE DE
+//                    //int scoreTemporaire = ...
+///*
+//                    switch(scoreTemporaire){
+//
+//                        case 0 :  ArretTour = true;
+//                                  break;
+//                        case 21 : System.out.println("Le joueur " + player.getNom() + "a obtenu un BUNCO !");
+//                                  ArretTour = true;
+//                                  break;
+//                        default : lancerDe++;
+//                    }
+//
+//                    score += scoreTemporaire;
+//*/
+//                }
+//            
+//            //On ajoute le score a la fin de son tour
+//            //player.setScore(player.getScore + score);
+//
+//            //Print Score a la fin du tour
+//            System.out.println("Score pour le tour : " + score);
+//
+//            //Incremente le tour pour atteindre le 6em tour et cloturer la boucle
+//            tour++;
+//
+//            //On remet le score a 0
+//            score = 0;
+//
+//            //on stop la boucle
+//            ArretTour = true;
+//
+//        }
 
-        PlayerIterator players;
-
-        while(tour<6){
-
-            players = new PlayerIterator(jeu.getPlayers()); //<----------- get la liste des joueurs grace a l'iterator mais A CONFIRMER AVEC EQUIPE
-
-
-            //Print quel tour on est
-            System.out.println("Tour : " + tour+1);
-
-            //On defile les joueurs dans la collection
-            while(players.hasNext()){
-
-                Player player = (Player) players.next();
-                System.out.println("Joueur : " + player.getNom());
-
-                //On lance une boucle : tant que notre condition n'est pas atteinte, le tour continu
-                while(!ArretTour){
-                    System.out.println("Numero de lancer : " + lancerDe);
-
-                    // INSERER METHODE POUR LANCER LE DE
-                    //int scoreTemporaire = ...
-/*
-                    switch(scoreTemporaire){
-
-                        case 0 :  ArretTour = true;
-                                  break;
-                        case 21 : System.out.println("Le joueur " + player.getNom() + "a obtenu un BUNCO !");
-                                  ArretTour = true;
-                                  break;
-                        default : lancerDe++;
-                    }
-
-                    score += scoreTemporaire;
-*/
-                }
-            }
-
-            //On ajoute le score a la fin de son tour
-            //player.setScore(player.getScore + score);
-
-            //Print Score a la fin du tour
-            System.out.println("Score pour le tour : " + score);
-
-            //Incremente le tour pour atteindre le 6em tour et cloturer la boucle
-            tour++;
-
-            //On remet le score a 0
-            score = 0;
-
-            //on stop la boucle
-            ArretTour = true;
-
-        }
-
-        return score;
+        return 0;
     }
+
+	@Override
+	public int getNbTurns() {
+		
+		return 6;
+	}
 
 
 }
