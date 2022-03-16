@@ -13,6 +13,12 @@ public class Jeu {
 	private CollectionDe des;
 
 	public Jeu(CollectionDe des, CollectionJoueur joueurs, Strategie strategie) {
+		if (joueurs == null || des == null || strategie == null) {
+			throw new IllegalArgumentException();
+		}
+		if (joueurs.size() < 2 || des.size() < 1) {
+			throw new IllegalArgumentException();
+		}
 		this.joueurs = joueurs;
 		this.des = des;
 		this.strategie = strategie;
@@ -82,8 +88,8 @@ public class Jeu {
 		return strategie.calculerVainqueur(joueurs);
 	}
 
-	public boolean calculerScoreTour(Joueur joueur, CollectionDe des, int i) {
-		return strategie.calculerScoreTour(joueur, des, i);
+	public boolean calculerScoreTour(Joueur joueur, CollectionDe des, int tour) {
+		return strategie.calculerScoreTour(joueur, des, tour);
 	}
 
 }

@@ -11,6 +11,9 @@ public class De implements Comparable<De> {
     private int faceActuelle;
 
     public De(int nbFaces) {
+        if (nbFaces < 1) {
+            throw new IllegalArgumentException();
+        }
         this.nbFaces = nbFaces;
     }
 
@@ -22,6 +25,9 @@ public class De implements Comparable<De> {
     }
 
     public void setFaceActuelle(int face) {
+        if (face < 1 || face > nbFaces) {
+            throw new IllegalArgumentException();
+        }
         this.faceActuelle = face;
     }
 
@@ -35,9 +41,12 @@ public class De implements Comparable<De> {
     }
 
     @Override
-    public int compareTo(De autre) {
-        Integer cetteFace = Integer.valueOf(this.getFaceActuelle());
-        Integer autreFace = Integer.valueOf(autre.getFaceActuelle());
-        return cetteFace.compareTo(autreFace);
+    public int compareTo(De de2) {
+        if (de2 == null) {
+            throw new IllegalArgumentException();
+        }
+        Integer face = Integer.valueOf(this.getFaceActuelle());
+        Integer face2 = Integer.valueOf(de2.getFaceActuelle());
+        return face.compareTo(face2);
     }
 }

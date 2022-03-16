@@ -24,6 +24,13 @@ public class StrategieBunco implements Strategie {
 
 	@Override
 	public CollectionJoueur calculerVainqueur(CollectionJoueur joueurs) {
+		if (joueurs == null) {
+			throw new IllegalArgumentException();
+		}
+		if (joueurs.size() < 2) {
+			throw new IllegalArgumentException();
+		}
+
 		IterateurJoueur iterateurJoueurs = joueurs.iterator();
 		CollectionJoueur joueursTries = new CollectionJoueur();
 
@@ -55,6 +62,13 @@ public class StrategieBunco implements Strategie {
 
 	@Override
 	public boolean calculerScoreTour(Joueur joueur, CollectionDe des, int tour) {
+		if (joueur == null || des == null) {
+			throw new IllegalArgumentException();
+		}
+		if (des.size() < 1 || tour < 1) {
+			throw new IllegalArgumentException();
+		}
+
 		IterateurDe iterateur = des.iterator();
 		int score = 0;
 		boolean facesIdentiques = true;
