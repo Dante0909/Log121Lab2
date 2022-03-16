@@ -5,16 +5,16 @@ import java.util.Random;
 /**
  * De
  */
-public class Dice implements Comparable<Dice> {
+public class De implements Comparable<De> {
 
     private int nbFaces;
     private int faceActuelle;
 
-    public Dice(int nbFaces) {
+    public De(int nbFaces) {
         this.nbFaces = nbFaces;
     }
 
-    public Dice() {
+    public De() {
     }
 
     public int getFaceActuelle() {
@@ -35,7 +35,7 @@ public class Dice implements Comparable<Dice> {
     }
 
     @Override
-    public int compareTo(Dice autre) {
+    public int compareTo(De autre) {
         Integer cetteFace = Integer.valueOf(this.getFaceActuelle());
         Integer autreFace = Integer.valueOf(autre.getFaceActuelle());
         return cetteFace.compareTo(autreFace);

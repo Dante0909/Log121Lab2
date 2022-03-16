@@ -1,7 +1,7 @@
 package framework;
 
 import framework.de.*;
-import framework.joueur.CollectionPlayer;
+import framework.joueur.CollectionJoueur;
 import framework.joueur.*;
 
 /**
@@ -9,73 +9,69 @@ import framework.joueur.*;
  */
 public class Jeu {
 
-	private Strategy strategy;
-	private CollectionPlayer players;
-	private CollectionDice dices;
+	private Strategie strategie;
+	private CollectionJoueur joueurs;
+	private CollectionDe des;
 
-	public Jeu(CollectionDice d, CollectionPlayer p, Strategy s) {
-		this.players = p;
-		this.dices = d;
-		this.strategy = s;
-	}
-
-	public CollectionPlayer getPlayers() {
-		return players;
+	public Jeu(CollectionDe des, CollectionJoueur joueurs, Strategie strategie) {
+		this.joueurs = joueurs;
+		this.des = des;
+		this.strategie = strategie;
 	}
 
 	public void lancerJeu() {
 
-		for (int i = 0; i < strategy.getNbTurns(); ++i) {
+		for (int i = 0; i < strategie.getNbTours(); ++i) {
 
-			System.out.println("\n\nRound n°" + (i + 1) + "\n");
+			System.out.println("\n\nTour n°" + (i + 1) + "\n");
 
-			PlayerIterator hand = players.iterator();
+			IterateurJoueur main = joueurs.iterator();
 
-			while (hand.hasNext()) {
-				Player p = hand.next();
-				System.out.println("\nPlayer : " + p.getNom());
-				boolean passHand = false;
-				while (!passHand) {
-					passHand = strategy.calculerScoreTour(p, dices, i + 1);
+			while (main.hasNext()) {
+				Joueur joueur = main.next();
+				System.out.println("\nJoueur : " + joueur.getNom());
+				boolean passerMain = false;
+				while (!passerMain) {
+					passerMain = strategie.calculerScoreTour(joueur, des, i + 1);
 				}
 			}
 
-			int maxScore = 0;
-			Player roundWinner = null;
-			PlayerIterator iterator = players.iterator();
-			while (iterator.hasNext()) {
-				Player player = iterator.next();
-				int score = player.getCurrentRoundScore();
-				if (score > maxScore) {
-					roundWinner = player;
-					maxScore = score;
-				} else if (score == maxScore) {
+			int scoreMax = 0;
+			Joueur gagnantDuTour = null;
+			IterateurJoueur iterateur = joueurs.iterator();
+			while (iterateur.hasNext()) {
+				Joueur joueur = iterateur.next();
+				int score = joueur.getScoreTourActuel();
+				if (score > scoreMax) {
+					gagnantDuTour = joueur;
+					scoreMax = score;
+				} else if (score == scoreMax) {
 					// Égalité
-					roundWinner = null;
+					gagnantDuTour = null;
 				}
-				player.setTotalScore(player.getTotalScore() + score);
-				player.setCurrentRoundScore(0);
+				joueur.setScoreTotal(joueur.getScoreTotal() + score);
+				joueur.setScoreTourActuel(0);
 			}
 
-			if (roundWinner != null) {
-				System.out.println("\n" + roundWinner.getNom() + " won the round.");
-				roundWinner.incrementWins();
+			if (gagnantDuTour != null) {
+				System.out.println("\n" + gagnantDuTour.getNom() + " a gagné le tour.");
+				gagnantDuTour.incrementerVictoires();
 			} else {
-				System.out.println("\nNo winner for this round.");
+				System.out.println("\nPas de gagnant pour ce tour.");
 			}
 		}
 
-		CollectionPlayer sortedPlayers = strategy.calculerVainqueur(players);
+		CollectionJoueur joueursTries = strategie.calculerVainqueur(joueurs);
 
-		System.out.println("\n\n\n\nplayers\n");
-		for (Player player : sortedPlayers) {
-			System.out.println(player);
+		System.out.println("\n\n\n\njoueurs\n");
+		for (Joueur joueur : joueursTries) {
+			System.out.println(joueur);
 		}
 
-		if (sortedPlayers.get(0).compareTo(sortedPlayers.get(1)) == 0) {
-			System.out.println("Draw");
+		if (joueursTries.get(0).compareTo(joueursTries.get(1)) == 0) {
+			System.out.println("Égalité");
 		} else {
-			System.out.println("Winner is " + sortedPlayers.get(0).getNom());
+			System.out.println("Le gagnant est " + joueursTries.get(0).getNom());
 		}
 	}
 

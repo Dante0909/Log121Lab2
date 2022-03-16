@@ -6,12 +6,12 @@ import java.util.NoSuchElementException;
 /**
  * JoueurIterateur
  */
-public class PlayerIterator implements Iterator<Player> {
+public class IterateurJoueur implements Iterator<Joueur> {
 
-    private Player[] joueurs;
+    private Joueur[] joueurs;
     private int indice;
 
-    public PlayerIterator(CollectionPlayer joueurs) {
+    public IterateurJoueur(CollectionJoueur joueurs) {
         this.joueurs = joueurs.toArray();
         this.indice = -1; // car on doit appeller next() au début pour avoir le premier element
     }
@@ -22,23 +22,12 @@ public class PlayerIterator implements Iterator<Player> {
     }
 
     @Override
-    public Player next() {
+    public Joueur next() {
         if (!this.hasNext()) {
             throw new NoSuchElementException();
         }
         this.indice++;
-        return this.current();
-    }
-
-    public Player current() {
-        if (this.indice == -1) {
-            throw new NoSuchElementException();
-        }
         return this.joueurs[this.indice];
     }
-
-    /**
-     * LA METHODE CREATE ITERATOR EST OU ?? - sunny
-     */
 
 }

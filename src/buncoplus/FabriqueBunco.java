@@ -5,7 +5,7 @@ import java.util.List;
 
 import framework.Fabrique;
 import framework.Jeu;
-import framework.Strategy;
+import framework.Strategie;
 import framework.de.*;
 import framework.joueur.*;
 
@@ -14,58 +14,56 @@ import framework.joueur.*;
  */
 public class FabriqueBunco extends Fabrique {
 
-	private int nbPlayers = 2;
+	private int nbJoueurs = 2;
 
-	private int nbDices = 3;
+	private int nbDes = 3;
 
 	private int nbFaces = 6;
 
 	/*
-	 * public FabriqueBunco(int nbPlayers) {
-	 * this.nbPlayers = nbPlayers;
+	 * public FabriqueBunco(int nbJoueurs) {
+	 * this.nbJoueurs = nbJoueurs;
 	 * }
 	 */
 	public FabriqueBunco() {
 
 	}
 
-	public FabriqueBunco(int n) {
-		nbPlayers = n;
+	public FabriqueBunco(int nb) {
+		nbJoueurs = nb;
 	}
 
 	@Override
-	protected CollectionPlayer createPlayers() {
-		List<Player> a = new ArrayList<Player>();
+	protected CollectionJoueur creerJoueurs() {
+		List<Joueur> joueurs = new ArrayList<Joueur>();
 
-		for (int i = 0; i < nbPlayers; ++i) {
-			a.add(new Player("Player " + i + 1));
+		for (int i = 0; i < nbJoueurs; ++i) {
+			joueurs.add(new Joueur("Joueur " + i + 1));
 		}
-		CollectionPlayer p = new CollectionPlayer(a);
-		return p;
+		return new CollectionJoueur(joueurs);
 	}
 
 	@Override
-	protected CollectionDice createDices() {
-		List<Dice> a = new ArrayList<Dice>();
+	protected CollectionDe creerDes() {
+		List<De> des = new ArrayList<De>();
 
-		for (int i = 0; i < nbDices; ++i) {
-			a.add(new Dice(nbFaces));
+		for (int i = 0; i < nbDes; ++i) {
+			des.add(new De(nbFaces));
 		}
-		CollectionDice d = new CollectionDice(a);
-		return d;
+		return new CollectionDe(des);
 	}
 
 	@Override
-	protected Strategy createStrategy() {
-		return new StrategyBunco();
+	protected Strategie creerStrategie() {
+		return new StrategieBunco();
 	}
 
 	@Override
-	public Jeu createGame() {
-		Strategy s = createStrategy();
-		CollectionPlayer p = createPlayers();
-		CollectionDice d = createDices();
-		return new Jeu(d, p, s);
+	public Jeu creerJeu() {
+		Strategie strategie = creerStrategie();
+		CollectionJoueur joueurs = creerJoueurs();
+		CollectionDe des = creerDes();
+		return new Jeu(des, joueurs, strategie);
 
 	}
 

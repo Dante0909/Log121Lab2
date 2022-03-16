@@ -7,8 +7,11 @@ import framework.joueur.*;
  * Fabrique
  */
 public abstract class Fabrique {
-	protected abstract CollectionPlayer createPlayers();
-	protected abstract CollectionDice createDices();
-	protected abstract Strategy createStrategy();
-	public abstract Jeu createGame();
+	protected abstract CollectionJoueur creerJoueurs();
+
+	protected abstract CollectionDe creerDes();
+
+	protected abstract Strategie creerStrategie();
+
+	public abstract Jeu creerJeu();
 }

@@ -6,12 +6,12 @@ import java.util.NoSuchElementException;
 /**
  * DeIterateur
  */
-public class DiceIterator implements Iterator<Dice> {
+public class IterateurDe implements Iterator<De> {
 
-    private Dice[] des;
+    private De[] des;
     private int indice;
 
-    public DiceIterator(CollectionDice des) {
+    public IterateurDe(CollectionDe des) {
         this.des = des.toArray();
         this.indice = -1; // car on doit appeller next() au début pour avoir le premier element
     }
@@ -22,18 +22,11 @@ public class DiceIterator implements Iterator<Dice> {
     }
 
     @Override
-    public Dice next() {
+    public De next() {
         if (!this.hasNext()) {
             throw new NoSuchElementException();
         }
         this.indice++;
-        return this.current();
-    }
-
-    public Dice current() {
-        if (this.indice == -1) {
-            throw new NoSuchElementException();
-        }
         return this.des[this.indice];
     }
 

@@ -8,8 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Fabrique bunco = new FabriqueBunco();
-		Jeu jeu = bunco.createGame();
+		Fabrique fabrique = new FabriqueBunco();
+		Jeu jeu = fabrique.creerJeu();
 		jeu.lancerJeu();
 
 	}

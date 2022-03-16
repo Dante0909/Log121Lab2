@@ -1,8 +1,8 @@
 package framework;
 
-import framework.de.CollectionDice;
-import framework.joueur.CollectionPlayer;
-import framework.joueur.Player;
+import framework.de.CollectionDe;
+import framework.joueur.CollectionJoueur;
+import framework.joueur.Joueur;
 
 /**
  * Interface Stategie
@@ -10,7 +10,7 @@ import framework.joueur.Player;
  * Cette interface va implementer toute les methodes requises pour cree une
  * strategie
  */
-public interface Strategy {
+public interface Strategie {
 
     /**
      * Methode pour calculer le vainqueur
@@ -18,16 +18,16 @@ public interface Strategy {
      * @param jeu une instance du jeu
      * @return Joueur gagnant
      */
-    CollectionPlayer calculerVainqueur(CollectionPlayer players);
+    CollectionJoueur calculerVainqueur(CollectionJoueur joueurs);
 
     /**
      * Methode pour calculer le score du tour
      * 
-     * @param turn TODO
+     * @param tour TODO
      * @param jeu  une instance du jeu
      * @return le score du tour
      */
-    boolean calculerScoreTour(Player player, CollectionDice dices, int turn);
+    boolean calculerScoreTour(Joueur joueur, CollectionDe des, int tour);
 
-    int getNbTurns();
+    int getNbTours();
 }
