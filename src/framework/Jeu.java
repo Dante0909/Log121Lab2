@@ -72,11 +72,6 @@ public class Jeu {
 
 		CollectionJoueur joueursTries = this.calculerVainqueur(joueurs);
 
-		System.out.println("\n\n\n\njoueurs\n");
-		for (Joueur joueur : joueursTries) {
-			System.out.println(joueur);
-		}
-
 		if (joueursTries.get(0).compareTo(joueursTries.get(1)) == 0) {
 			System.out.println("Égalité");
 		} else {
