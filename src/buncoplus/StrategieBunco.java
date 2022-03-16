@@ -18,6 +18,10 @@ import framework.joueur.IterateurJoueur;
  */
 public class StrategieBunco implements Strategie {
 
+	static final private int scoreBunco = 21;
+	static final private int scoreTriplet = 5;
+	static final private int nbTours = 6;
+
 	@Override
 	public CollectionJoueur calculerVainqueur(CollectionJoueur joueurs) {
 		IterateurJoueur iterateurJoueurs = joueurs.iterator();
@@ -57,7 +61,6 @@ public class StrategieBunco implements Strategie {
 		int derniereFace = -1;
 		while (iterateur.hasNext()) {
 			De de = iterateur.next();
-			de.rouler();
 			int face = de.getFaceActuelle();
 			System.out.println("Lancé de dé : " + face);
 			if (tour == face) {
@@ -70,22 +73,22 @@ public class StrategieBunco implements Strategie {
 		}
 		if (facesIdentiques) {
 			if (derniereFace == tour) {
-				score = 21;
+				score = scoreBunco;
 				System.out.println("Bunco !");
 			} else {
-				score = 5;
+				score = scoreTriplet;
 			}
 		}
 
 		joueur.setScoreTourActuel(joueur.getScoreTourActuel() + score);
 
-		return score == 0 || score == 21;
+		return score == 0 || score == scoreBunco;
 	}
 
 	@Override
 	public int getNbTours() {
 
-		return 6;
+		return nbTours;
 	}
 
 }

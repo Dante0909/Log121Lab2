@@ -29,8 +29,10 @@ public class FabriqueBunco extends Fabrique {
 
 	}
 
-	public FabriqueBunco(int nb) {
-		nbJoueurs = nb;
+	public FabriqueBunco(int nbJoueurs, int nbDes, int nbFaces) {
+		this.nbJoueurs = nbJoueurs;
+		this.nbDes = nbDes;
+		this.nbFaces = nbFaces;
 	}
 
 	@Override

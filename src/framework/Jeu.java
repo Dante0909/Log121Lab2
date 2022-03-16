@@ -1,7 +1,6 @@
 package framework;
 
 import framework.de.*;
-import framework.joueur.CollectionJoueur;
 import framework.joueur.*;
 
 /**
@@ -32,7 +31,11 @@ public class Jeu {
 				System.out.println("\nJoueur : " + joueur.getNom());
 				boolean passerMain = false;
 				while (!passerMain) {
-					passerMain = strategie.calculerScoreTour(joueur, des, i + 1);
+					IterateurDe iterateur = this.des.iterator();
+					while (iterateur.hasNext()) {
+						iterateur.next().rouler();
+					}
+					passerMain = this.calculerScoreTour(joueur, des, i + 1);
 				}
 			}
 
@@ -61,7 +64,7 @@ public class Jeu {
 			}
 		}
 
-		CollectionJoueur joueursTries = strategie.calculerVainqueur(joueurs);
+		CollectionJoueur joueursTries = this.calculerVainqueur(joueurs);
 
 		System.out.println("\n\n\n\njoueurs\n");
 		for (Joueur joueur : joueursTries) {
@@ -73,6 +76,14 @@ public class Jeu {
 		} else {
 			System.out.println("Le gagnant est " + joueursTries.get(0).getNom());
 		}
+	}
+
+	public CollectionJoueur calculerVainqueur(CollectionJoueur joueurs) {
+		return strategie.calculerVainqueur(joueurs);
+	}
+
+	public boolean calculerScoreTour(Joueur joueur, CollectionDe des, int i) {
+		return strategie.calculerScoreTour(joueur, des, i);
 	}
 
 }
