@@ -1,6 +1,7 @@
 package buncoplus;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import framework.Fabrique;
 import framework.Jeu;
@@ -15,32 +16,42 @@ public class FabriqueBunco extends Fabrique {
 
 	private int nbPlayers = 2;
 
-	/*public FabriqueBunco(int nbPlayers) {
-		this.nbPlayers = nbPlayers;
-	}
-*/
+	private int nbDices = 3;
+
+	private int nbFaces = 6;
+
+	/*
+	 * public FabriqueBunco(int nbPlayers) {
+	 * this.nbPlayers = nbPlayers;
+	 * }
+	 */
 	public FabriqueBunco() {
 
 	}
+
 	public FabriqueBunco(int n) {
 		nbPlayers = n;
 	}
 
 	@Override
 	protected CollectionPlayer createPlayers() {
-		var a = new ArrayList<Player>();
+		List<Player> a = new ArrayList<Player>();
 
 		for (int i = 0; i < nbPlayers; ++i) {
-			a.add(new Player("Player "+ i+1));
+			a.add(new Player("Player " + i + 1));
 		}
-		var p = new CollectionPlayer(a);
+		CollectionPlayer p = new CollectionPlayer(a);
 		return p;
 	}
 
 	@Override
 	protected CollectionDice createDices() {
-		var a = new ArrayList<Dice>();
-		var d = new CollectionDice(a);
+		List<Dice> a = new ArrayList<Dice>();
+
+		for (int i = 0; i < nbDices; ++i) {
+			a.add(new Dice(nbFaces));
+		}
+		CollectionDice d = new CollectionDice(a);
 		return d;
 	}
 
@@ -51,9 +62,9 @@ public class FabriqueBunco extends Fabrique {
 
 	@Override
 	public Jeu createGame() {
-		var s = createStrategy();
-		var p = createPlayers();
-		var d = createDices();
+		Strategy s = createStrategy();
+		CollectionPlayer p = createPlayers();
+		CollectionDice d = createDices();
 		return new Jeu(d, p, s);
 
 	}

@@ -1,7 +1,7 @@
 package framework.de;
 
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -31,13 +31,16 @@ public class CollectionDice implements Collection<Dice> {
     }
 
     @Override
-    public Iterator<Dice> iterator() {
+    public DiceIterator iterator() {
         return new DiceIterator(this);
     }
 
     @Override
     public Dice[] toArray() {
-        return (Dice[]) this.des.toArray(); // Retourer le bon type
+        Object[] array = this.des.toArray();
+        Dice[] dices = new Dice[array.length];
+        Arrays.setAll(dices, index -> (Dice) array[index]); // Retourer le bon type
+        return dices;
     }
 
     @Override

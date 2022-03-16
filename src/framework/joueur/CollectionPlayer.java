@@ -1,7 +1,8 @@
 package framework.joueur;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -13,6 +14,10 @@ public class CollectionPlayer implements Collection<Player> {
 
     public CollectionPlayer(List<Player> joueurs) {
         this.joueurs = joueurs;
+    }
+
+    public CollectionPlayer() {
+        this.joueurs = new ArrayList<Player>();
     }
 
     @Override
@@ -31,13 +36,16 @@ public class CollectionPlayer implements Collection<Player> {
     }
 
     @Override
-    public Iterator<Player> iterator() {
+    public PlayerIterator iterator() {
         return new PlayerIterator(this);
     }
 
     @Override
     public Player[] toArray() {
-        return (Player[]) this.joueurs.toArray(); // Retourer le bon type
+        Object[] array = this.joueurs.toArray();
+        Player[] players = new Player[array.length];
+        Arrays.setAll(players, index -> (Player) array[index]); // Retourer le bon type
+        return players;
     }
 
     @Override
@@ -79,6 +87,10 @@ public class CollectionPlayer implements Collection<Player> {
     public void clear() {
         this.joueurs.clear();
 
+    }
+
+    public Player get(int i) {
+        return this.joueurs.get(i);
     }
 
 }
